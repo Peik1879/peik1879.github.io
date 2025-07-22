@@ -5,6 +5,8 @@ console.log("🎮 Peik1879 Portfolio mit GSAP lädt...");
 
 // Loading Animation
 window.addEventListener('load', () => {
+  console.log("🚀 Seite geladen - starte Animationen");
+  
   // Animate page entrance
   gsap.from('body', {
     duration: 1,
@@ -155,20 +157,31 @@ gsap.utils.toArray('.section-title').forEach(title => {
 gsap.utils.toArray('.timeline-item').forEach((item, index) => {
   const isEven = index % 2 === 0;
   
-  gsap.from(item, {
-    scrollTrigger: {
-      trigger: item,
-      start: 'top 85%',
-      end: 'bottom 15%',
-      toggleActions: 'play none none reverse'
+  console.log(`🎯 Animiere Timeline Item ${index + 1}`);
+  
+  gsap.fromTo(item, 
+    { 
+      opacity: 0, 
+      x: isEven ? -150 : 150, 
+      rotation: isEven ? -5 : 5,
+      scale: 0.9
     },
-    duration: 1.2,
-    x: isEven ? -150 : 150,
-    opacity: 0,
-    rotation: isEven ? -5 : 5,
-    ease: 'power3.out',
-    delay: index * 0.1
-  });
+    {
+      scrollTrigger: {
+        trigger: item,
+        start: 'top 85%',
+        end: 'bottom 15%',
+        toggleActions: 'play none none reverse'
+      },
+      duration: 1.2,
+      opacity: 1,
+      x: 0,
+      rotation: 0,
+      scale: 1,
+      ease: 'power3.out',
+      delay: index * 0.1
+    }
+  );
   
   // Hover animation for timeline items
   item.addEventListener('mouseenter', () => {
@@ -192,20 +205,31 @@ gsap.utils.toArray('.timeline-item').forEach((item, index) => {
 
 // Project Cards Animation
 gsap.utils.toArray('.project-card').forEach((card, index) => {
-  gsap.from(card, {
-    scrollTrigger: {
-      trigger: card,
-      start: 'top 85%',
-      end: 'bottom 15%',
-      toggleActions: 'play none none reverse'
+  console.log(`🎯 Animiere Project Card ${index + 1}`);
+  
+  gsap.fromTo(card,
+    { 
+      opacity: 0, 
+      y: 100, 
+      rotation: 2,
+      scale: 0.9
     },
-    duration: 1,
-    y: 100,
-    opacity: 0,
-    rotation: 2,
-    ease: 'power3.out',
-    delay: index * 0.2
-  });
+    {
+      scrollTrigger: {
+        trigger: card,
+        start: 'top 85%',
+        end: 'bottom 15%',
+        toggleActions: 'play none none reverse'
+      },
+      duration: 1,
+      opacity: 1,
+      y: 0,
+      rotation: 0,
+      scale: 1,
+      ease: 'power3.out',
+      delay: index * 0.2
+    }
+  );
   
   // Enhanced hover animation for project cards
   card.addEventListener('mouseenter', () => {
@@ -217,11 +241,14 @@ gsap.utils.toArray('.project-card').forEach((card, index) => {
       ease: 'power2.out'
     });
     
-    gsap.to(card.querySelector('.project-image img'), {
-      duration: 0.4,
-      scale: 1.1,
-      ease: 'power2.out'
-    });
+    const img = card.querySelector('.project-image img');
+    if (img) {
+      gsap.to(img, {
+        duration: 0.4,
+        scale: 1.1,
+        ease: 'power2.out'
+      });
+    }
   });
   
   card.addEventListener('mouseleave', () => {
@@ -233,11 +260,14 @@ gsap.utils.toArray('.project-card').forEach((card, index) => {
       ease: 'power2.out'
     });
     
-    gsap.to(card.querySelector('.project-image img'), {
-      duration: 0.4,
-      scale: 1,
-      ease: 'power2.out'
-    });
+    const img = card.querySelector('.project-image img');
+    if (img) {
+      gsap.to(img, {
+        duration: 0.4,
+        scale: 1,
+        ease: 'power2.out'
+      });
+    }
   });
 });
 

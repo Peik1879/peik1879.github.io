@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Debug - Portfolio Inhalte</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #0a0a0a; 
+      color: white; 
+      line-height: 1.6;
+      padding: 20px;
+    }
+    .timeline-achievements, .project-metrics {
+      background: #1a1a1a;
+      padding: 15px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border-left: 4px solid #00ff88;
+    }
+    .achievement, .metric {
+      display: block;
+      margin: 5px 0;
+      padding: 5px 0;
+      color: #00ff88;
+    }
+    .project-card {
+      background: #1a1a1a;
+      margin: 20px 0;
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid #333;
+    }
+    h1 { color: #00ff88; margin: 20px 0; }
+    h2 { color: #fff; margin: 15px 0; }
+  </style>
+</head>
+<body>
+  <h1>🔍 Debug: Portfolio Inhalte Test</h1>
+  
+  <h2>Timeline Achievements Test:</h2>
+  <div class="timeline-achievements">
+    <span class="achievement">🚀 Umsatzsteigerung um 40% durch Performance-Optimierung</span>
+    <span class="achievement">👥 Mentoring von 3 Junior-Entwicklern</span>
+    <span class="achievement">⚡ Pagespeed von 2.1s auf 0.8s optimiert</span>
+  </div>
+
+  <h2>Projekt Metriken Test:</h2>
+  <div class="project-card">
+    <h3 style="color: #00ff88;">CryptoTracker Pro</h3>
+    <div class="project-metrics">
+      <span class="metric">📊 2.3M API Calls/Tag</span>
+      <span class="metric">⚡ <100ms Response Time</span>
+      <span class="metric">🏆 4.8★ App Store Rating</span>
+    </div>
+  </div>
+
+  <h2>Wenn du diese Inhalte siehst, ist das HTML korrekt!</h2>
+  <p>Das Problem liegt dann an CSS-Styling oder JavaScript-Animationen.</p>
+  
+  <script>
+    console.log("Debug-Seite geladen!");
+    console.log("Timeline achievements:", document.querySelectorAll('.timeline-achievements').length);
+    console.log("Project metrics:", document.querySelectorAll('.project-metrics').length);
+  </script>
+</body>
+</html>

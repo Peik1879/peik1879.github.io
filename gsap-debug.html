@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAP Debug Test</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: Arial, sans-serif; 
+      background: #0a0a0a; 
+      color: white; 
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .test-section {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-bottom: 1px solid #333;
+    }
+    
+    .timeline-item {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 15px;
+      margin: 50px 0;
+      border-left: 4px solid #00ff88;
+      width: 80%;
+    }
+    
+    .timeline-achievements {
+      background: rgba(0, 255, 136, 0.1);
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+    
+    .achievement {
+      display: block;
+      margin: 8px 0;
+      color: #00ff88;
+      padding: 5px 0;
+    }
+    
+    .project-card {
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 20px;
+      margin: 50px 0;
+      border: 1px solid #333;
+    }
+    
+    .project-metrics {
+      background: rgba(0, 255, 136, 0.1);
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 10px;
+    }
+    
+    .metric {
+      display: block;
+      margin: 8px 0;
+      color: #00ff88;
+      padding: 5px 0;
+    }
+    
+    h1 { color: #00ff88; text-align: center; }
+    h2 { color: #fff; margin-bottom: 10px; }
+    h3 { color: #00ff88; margin-bottom: 10px; }
+    
+    #gsap-status {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: #333;
+      padding: 10px;
+      border-radius: 5px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+  <div id="gsap-status">GSAP Status: Loading...</div>
+
+  <div class="container">
+    <div class="test-section">
+      <h1>🔍 GSAP Animation Debug Test</h1>
+    </div>
+
+    <div class="test-section">
+      <div class="timeline-item" data-year="2024">
+        <h2>Timeline Test</h2>
+        <p>Dieser Timeline-Item sollte animiert werden.</p>
+        <div class="timeline-achievements">
+          <span class="achievement">🚀 Test Achievement 1</span>
+          <span class="achievement">👥 Test Achievement 2</span>
+          <span class="achievement">⚡ Test Achievement 3</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <div class="project-card">
+        <h3>Projekt Test</h3>
+        <p>Dieses Projekt sollte animiert werden.</p>
+        <div class="project-metrics">
+          <span class="metric">📊 Test Metric 1</span>
+          <span class="metric">⚡ Test Metric 2</span>
+          <span class="metric">🏆 Test Metric 3</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="test-section">
+      <h2>Ende - Scroll nach oben um Animationen zu wiederholen</h2>
+    </div>
+  </div>
+
+  <script>
+    // Debug GSAP Loading
+    console.log("🔍 GSAP Debug gestartet");
+    
+    // Check if GSAP loaded
+    if (typeof gsap !== 'undefined') {
+      document.getElementById('gsap-status').textContent = 'GSAP Status: ✅ Geladen';
+      console.log("✅ GSAP erfolgreich geladen:", gsap.version);
+    } else {
+      document.getElementById('gsap-status').textContent = 'GSAP Status: ❌ Fehler';
+      console.error("❌ GSAP konnte nicht geladen werden!");
+    }
+
+    // Register ScrollTrigger
+    gsap.registerPlugin(ScrollTrigger);
+    console.log("📜 ScrollTrigger registriert");
+
+    // Simple Timeline Animation Test
+    window.addEventListener('load', () => {
+      console.log("🚀 Seite geladen - starte Animationen");
+
+      // Timeline Item Animation
+      gsap.utils.toArray('.timeline-item').forEach((item, index) => {
+        console.log(`🎯 Animiere Timeline Item ${index + 1}`);
+        
+        gsap.fromTo(item, 
+          { 
+            opacity: 0, 
+            x: -100,
+            scale: 0.8
+          },
+          {
+            scrollTrigger: {
+              trigger: item,
+              start: 'top 80%',
+              end: 'bottom 20%',
+              toggleActions: 'play none none reverse',
+              markers: true, // Zeigt Debug-Marker an
+              onEnter: () => console.log(`📍 Timeline ${index + 1} entered`),
+              onLeave: () => console.log(`📍 Timeline ${index + 1} left`)
+            },
+            duration: 1.2,
+            opacity: 1,
+            x: 0,
+            scale: 1,
+            ease: 'power3.out'
+          }
+        );
+      });
+
+      // Project Card Animation
+      gsap.utils.toArray('.project-card').forEach((card, index) => {
+        console.log(`🎯 Animiere Project Card ${index + 1}`);
+        
+        gsap.fromTo(card,
+          { 
+            opacity: 0, 
+            y: 100,
+            rotation: 5
+          },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 80%',
+              end: 'bottom 20%',
+              toggleActions: 'play none none reverse',
+              markers: true, // Zeigt Debug-Marker an
+              onEnter: () => console.log(`📍 Project ${index + 1} entered`),
+              onLeave: () => console.log(`📍 Project ${index + 1} left`)
+            },
+            duration: 1,
+            opacity: 1,
+            y: 0,
+            rotation: 0,
+            ease: 'power3.out'
+          }
+        );
+      });
+
+      console.log("✅ Alle Animationen initialisiert");
+      
+      // Test ScrollTrigger
+      setTimeout(() => {
+        console.log("🔍 ScrollTrigger Status:", ScrollTrigger.getAll().length, "Trigger gefunden");
+        ScrollTrigger.refresh();
+        console.log("🔄 ScrollTrigger aktualisiert");
+      }, 1000);
+    });
+
+    // Debug Scroll Events
+    let scrollCount = 0;
+    window.addEventListener('scroll', () => {
+      scrollCount++;
+      if (scrollCount % 10 === 0) { // Nur jede 10. Scroll-Event loggen
+        console.log(`📜 Scroll Event ${scrollCount}, Position: ${window.scrollY}px`);
+      }
+    });
+
+    // Error Handling
+    window.addEventListener('error', (e) => {
+      console.error('❌ JavaScript Fehler:', e.error);
+      document.getElementById('gsap-status').textContent = 'Status: ❌ JS Fehler';
+    });
+  </script>
+</body>
+</html>
