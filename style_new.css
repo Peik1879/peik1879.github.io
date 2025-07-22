@@ -17,12 +17,11 @@ body {
   overflow-x: hidden;
 }
 
-/* Basic fade-in animations - Enhanced for GSAP */
+/* Basic fade-in animations */
 .timeline-item, .project-card, .resume-item, .contact-item {
   opacity: 0;
   transform: translateY(30px);
   transition: all 0.8s ease-out;
-  will-change: transform, opacity;
 }
 
 /* Container */
@@ -432,37 +431,6 @@ section {
   height: 250px;
 }
 
-.project-overlay {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.project-status {
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.project-users {
-  background: rgba(0, 255, 136, 0.2);
-  color: #00ff88;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  backdrop-filter: blur(10px);
-  border: 1px solid #00ff88;
-}
-
 .project-image img {
   width: 100%;
   height: 100%;
@@ -482,32 +450,6 @@ section {
   color: #00ff88;
   margin-bottom: 1rem;
   font-size: 1.3rem;
-}
-
-.project-content p {
-  color: rgba(255, 255, 255, 0.8);
-  line-height: 1.6;
-  margin-bottom: 20px;
-  font-size: 0.95rem;
-}
-
-.project-metrics {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  margin-bottom: 20px;
-  padding: 15px;
-  background: rgba(0, 255, 136, 0.05);
-  border-radius: 12px;
-  border: 1px solid rgba(0, 255, 136, 0.1);
-}
-
-.metric {
-  font-size: 0.85rem;
-  color: rgba(255, 255, 255, 0.9);
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 .project-tech {
@@ -634,14 +576,11 @@ section {
 }
 
 .contact-item {
-  display: flex;
-  align-items: center;
   margin-bottom: 1rem;
   padding: 1rem;
   background: rgba(255, 255, 255, 0.05);
   border-radius: 10px;
   border-left: 4px solid #00ff88;
-  transition: all 0.3s ease;
 }
 
 .contact-item a {
@@ -669,373 +608,13 @@ section {
 .footer {
   background: #000000;
   padding: 2rem 0;
+  text-align: center;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
-
-.footer-left p {
+.footer p {
   color: #666666;
 }
-
-.footer-social {
-  display: flex;
-  gap: 1rem;
-}
-
-.footer-social a {
-  font-size: 1.5rem;
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.footer-social a:hover {
-  transform: scale(1.2);
-}
-
-/* Timeline Skills */
-.timeline-skills {
-  margin-top: 1rem;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.timeline-skills span {
-  background: rgba(0, 255, 136, 0.2);
-  color: #00ff88;
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  border: 1px solid rgba(0, 255, 136, 0.3);
-}
-
-/* Skills Enhancement */
-.skill-category {
-  margin-bottom: 2rem;
-}
-
-.skill-category h4 {
-  color: #00ff88;
-  margin-bottom: 1rem;
-  font-size: 1.1rem;
-  border-bottom: 2px solid rgba(0, 255, 136, 0.3);
-  padding-bottom: 0.5rem;
-}
-
-.grade, .cert-id {
-  display: block;
-  color: #00ff88;
-  font-size: 0.9rem;
-  font-style: italic;
-  margin-top: 0.5rem;
-}
-
-/* Achievements */
-.achievements {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 15px;
-  margin: 2rem 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-}
-
-.achievements h3 {
-  color: #00ff88;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.achievement-item {
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.achievement-number {
-  font-size: 2.5rem;
-  font-weight: bold;
-  background: linear-gradient(45deg, #00ff88, #00cc6a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  line-height: 1;
-}
-
-.achievement-label {
-  color: #cccccc;
-  font-size: 0.9rem;
-  margin-top: 0.5rem;
-}
-
-/* Languages */
-.languages {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 15px;
-  margin: 2rem 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.languages h3 {
-  color: #00ff88;
-  margin-bottom: 1.5rem;
-}
-
-.language-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.language-item:last-child {
-  border-bottom: none;
-}
-
-.language-level {
-  color: #00ff88;
-  font-size: 0.9rem;
-}
-
-/* Interests */
-.interests {
-  background: rgba(255, 255, 255, 0.05);
-  padding: 2rem;
-  border-radius: 15px;
-  margin: 2rem 0;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.interests h3 {
-  color: #00ff88;
-  margin-bottom: 1.5rem;
-}
-
-.interest-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.8rem;
-}
-
-.interest-tags span {
-  background: rgba(0, 255, 136, 0.2);
-  color: #ffffff;
-  padding: 0.5rem 1rem;
-  border-radius: 25px;
-  font-size: 0.9rem;
-  border: 1px solid rgba(0, 255, 136, 0.3);
-  transition: all 0.3s ease;
-}
-
-.interest-tags span:hover {
-  background: rgba(0, 255, 136, 0.3);
-  transform: translateY(-2px);
-}
-
-/* Contact Enhancements */
-.contact-icon {
-  font-size: 1.5rem;
-  margin-right: 1rem;
-  min-width: 2rem;
-}
-
-.contact-item:hover {
-  background: rgba(255, 255, 255, 0.08);
-  transform: translateX(5px);
-}
-
-.contact-text {
-  flex: 1;
-}
-
-.contact-text strong {
-  display: block;
-  margin-bottom: 0.3rem;
-}
-
-.contact-text a {
-  color: #00ff88;
-  text-decoration: none;
-}
-
-.contact-text a:hover {
-  text-decoration: underline;
-}
-
-/* Availability Status */
-.availability {
-  background: rgba(0, 255, 136, 0.1);
-  padding: 1.5rem;
-  border-radius: 10px;
-  margin-top: 2rem;
-  border: 1px solid rgba(0, 255, 136, 0.3);
-}
-
-.availability h4 {
-  color: #00ff88;
-  margin-bottom: 1rem;
-}
-
-.availability p {
-  margin-bottom: 0.5rem;
-}
-
-.status {
-  padding: 0.3rem 0.8rem;
-  border-radius: 15px;
-  font-size: 0.8rem;
-  font-weight: bold;
-}
-
-.status.available {
-  background: rgba(40, 167, 69, 0.3);
-  color: #28a745;
-  border: 1px solid #28a745;
-}
-
-.status.limited {
-  background: rgba(255, 193, 7, 0.3);
-  color: #ffc107;
-  border: 1px solid #ffc107;
-}
-
-.status.preferred {
-  background: rgba(0, 255, 136, 0.3);
-  color: #00ff88;
-  border: 1px solid #00ff88;
-}
-
-/* Legal Sections */
-.legal-section {
-  margin-bottom: 1.5rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.legal-section:last-of-type {
-  border-bottom: none;
-}
-
-.legal-section address {
-  font-style: normal;
-  line-height: 1.6;
-}
-
-.tech-note {
-  margin-top: 2rem;
-  padding: 1rem;
-  background: rgba(0, 255, 136, 0.1);
-  border-radius: 10px;
-  border-left: 4px solid #00ff88;
-}
-
-.tech-note em {
-  color: #00ff88;
-}
-
-/* Custom Cursor Styles */
-.custom-cursor {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  mix-blend-mode: difference;
-}
-
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background: #00ff88;
-  border-radius: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  transition: all 0.1s ease;
-}
-
-.cursor-outline {
-  width: 30px;
-  height: 30px;
-  border: 2px solid rgba(0, 255, 136, 0.5);
-  border-radius: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
-}
-
-/* Typewriter Cursor Blink */
-.cursor-blink {
-  animation: blink 1s infinite;
-  color: #00ff88;
-}
-
-@keyframes blink {
-  0%, 50% { opacity: 1; }
-  51%, 100% { opacity: 0; }
-}
-
-/* Enhanced Glowing Effects for Hero Title */
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Skills Bar Shimmer Effect */
-.skill-progress::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shimmer 2s infinite;
-}
-
-@keyframes shimmer {
-  0% { left: -100%; }
-  100% { left: 100%; }
-}
-
-/* Page Transition Effect */
-.page-transition {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, #00ff88, #00cc6a);
-  z-index: 10000;
-  transform: translateX(-100%);
-}
-
-/* Button Shine Effect */
-.btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
-}
-
-.btn:hover::before {
-  left: 100%;
-}
-
-/* GSAP Performance Optimizations */
-/* (Animations handled by GSAP now) */
 
 /* Responsive Design */
 @media (max-width: 768px) {

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Peik1879 – Portfolio Test</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #0a0a0a;
+      color: #ffffff;
+      line-height: 1.6;
+    }
+    
+    .hero {
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/Strand.jpg') center/cover;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    
+    .hero h1 {
+      font-size: 4rem;
+      margin-bottom: 1rem;
+      background: linear-gradient(45deg, #ffffff, #00ff88);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero h2 {
+      font-size: 2rem;
+      color: #cccccc;
+      margin-bottom: 1rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+      color: #aaaaaa;
+      max-width: 600px;
+    }
+    
+    .section {
+      padding: 80px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .section h2 {
+      font-size: 2.5rem;
+      text-align: center;
+      margin-bottom: 3rem;
+      color: #00ff88;
+    }
+    
+    .test-content {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 2rem;
+      border-radius: 15px;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <section class="hero">
+    <h1>Peik1879</h1>
+    <h2>Max Mustermann</h2>
+    <p>Kreativer Entwickler & Visionär für digitale Innovationen</p>
+  </section>
+  
+  <section class="section">
+    <h2>Test erfolgreich!</h2>
+    <div class="test-content">
+      <p>Wenn du diesen Text siehst, funktioniert die Website grundsätzlich. Das Problem lag wahrscheinlich an den externen GSAP-Bibliotheken oder dem lokalen Dateizugriff.</p>
+    </div>
+  </section>
+  
+  <script>
+    console.log("Portfolio lädt erfolgreich!");
+  </script>
+</body>
+</html>
