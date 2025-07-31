@@ -19,10 +19,25 @@ body {
 
 /* Basic fade-in animations - Enhanced for GSAP */
 .timeline-item, .project-card, .resume-item, .contact-item {
-  opacity: 0;
-  transform: translateY(30px);
+  opacity: 1 !important;
+  transform: translateY(0) !important;
   transition: all 0.8s ease-out;
   will-change: transform, opacity;
+}
+
+/* Fallback CSS Animation wenn GSAP nicht lädt */
+.resume-item.visible, .timeline-item.visible, .project-card.visible, .contact-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Auto-show nach 3 Sekunden falls GSAP nicht funktioniert */
+body.loaded .timeline-item, 
+body.loaded .project-card, 
+body.loaded .resume-item, 
+body.loaded .contact-item {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* Container */
@@ -129,6 +144,14 @@ body {
   max-width: 800px;
   padding: 0 20px;
   animation: heroFadeIn 2s ease-out;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 2rem;
 }
 
 @keyframes heroFadeIn {
@@ -279,6 +302,15 @@ body {
   background: #00ff88;
   color: #000000;
   transform: translateY(-3px);
+}
+
+.btn.disabled {
+  background: rgba(255, 255, 255, 0.1);
+  color: #666666;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 /* Section Styling */
@@ -552,8 +584,172 @@ section {
   color: #00ff88;
   margin-bottom: 2rem;
   font-size: 1.5rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
 }
 
+.resume-section h3::before {
+  content: '';
+  width: 40px;
+  height: 3px;
+  background: linear-gradient(45deg, #00ff88, #00cc6a);
+  border-radius: 2px;
+}
+
+/* Enhanced Education & Qualifications Design */
+.education-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.education-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.03) 100%);
+  border-radius: 15px;
+  padding: 2rem;
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.education-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #00ff88, #00cc6a);
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 255, 136, 0.15);
+  border-color: rgba(0, 255, 136, 0.4);
+}
+
+.education-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.education-icon {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(45deg, #00ff88, #00cc6a);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 0 8px 20px rgba(0, 255, 136, 0.3);
+}
+
+.education-content h4 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.education-institution {
+  color: #00ff88;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
+}
+
+.education-period {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.education-details {
+  background: rgba(0, 255, 136, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid #00ff88;
+  margin-top: 1rem;
+}
+
+.education-status {
+  display: inline-block;
+  background: rgba(0, 255, 136, 0.2);
+  color: #00ff88;
+  padding: 0.3rem 0.8rem;
+  border-radius: 15px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+}
+
+.education-progress {
+  margin-top: 1rem;
+}
+
+.progress-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(45deg, #00ff88, #00cc6a);
+  border-radius: 3px;
+  transition: width 2s ease-out;
+  position: relative;
+}
+
+.progress-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  animation: shimmer 2s infinite;
+}
+
+.education-achievements {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.achievement-badge {
+  background: rgba(0, 255, 136, 0.15);
+  color: #00ff88;
+  padding: 0.2rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  border: 1px solid rgba(0, 255, 136, 0.3);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Legacy resume-item for backward compatibility */
 .resume-item {
   margin-bottom: 2rem;
   padding: 1.5rem;
@@ -1109,6 +1305,31 @@ section {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
+  .education-grid {
+    gap: 1rem;
+  }
+
+  .education-card {
+    padding: 1.5rem;
+  }
+
+  .education-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.8rem;
+  }
+
+  .education-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    align-self: center;
+  }
+
+  .education-achievements {
+    justify-content: center;
+  }
   
   .contact-content {
     grid-template-columns: 1fr;
@@ -1131,6 +1352,16 @@ section {
   
   .hero-description {
     font-size: 1.1rem;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .hero-cta .btn {
+    min-width: 200px;
   }
   
   .navbar {

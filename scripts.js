@@ -3,6 +3,50 @@ gsap.registerPlugin(ScrollTrigger);
 
 console.log("🎮 Peik1879 Portfolio mit GSAP lädt...");
 
+// Smooth Scroll für Navigation Links (Vereinfacht und funktional)
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("🔧 Initialisiere Smooth Scroll...");
+  
+  // Alle Links mit # finden
+  const scrollLinks = document.querySelectorAll('a[href^="#"]');
+  console.log(`📍 ${scrollLinks.length} Scroll-Links gefunden`);
+  
+  scrollLinks.forEach((link, index) => {
+    console.log(`🔗 Link ${index + 1}: ${link.getAttribute('href')}`);
+    
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      console.log(`🎯 Klick auf ${targetId}`);
+      
+      if (targetSection) {
+        console.log(`✅ Ziel gefunden: ${targetId}`);
+        
+        // Native Smooth Scroll (funktioniert immer)
+        const targetPosition = targetSection.offsetTop - 80;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Mobile Navigation schließen
+        const navLinks = document.querySelector('.nav-links');
+        const navToggle = document.querySelector('.nav-toggle');
+        if (navLinks && navLinks.classList.contains('active')) {
+          navLinks.classList.remove('active');
+          navToggle.classList.remove('active');
+        }
+      } else {
+        console.warn(`❌ Ziel nicht gefunden: ${targetId}`);
+      }
+    });
+  });
+});
+
 // Loading Animation
 window.addEventListener('load', () => {
   console.log("🚀 Seite geladen - starte Animationen");
@@ -13,6 +57,11 @@ window.addEventListener('load', () => {
     opacity: 0,
     ease: 'power2.out'
   });
+  
+  // Fallback: Zeige Inhalte nach 3 Sekunden falls GSAP nicht funktioniert
+  setTimeout(() => {
+    document.body.classList.add('loaded');
+  }, 3000);
   
   console.log("✅ Portfolio mit GSAP erfolgreich geladen!");
 });
@@ -65,21 +114,6 @@ if (navToggle && navLinks) {
     }
   });
 }
-
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
-    e.preventDefault();
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      gsap.to(window, {
-        duration: 1,
-        scrollTo: target,
-        ease: 'power2.inOut'
-      });
-    }
-  });
-});
 
 // Hero Section Entrance Animations
 gsap.timeline()
